@@ -46,5 +46,11 @@ PLASMIC.registerComponent(SwiperSlider, {
   name: 'SwiperSlider',
   props: {
     children: 'slot',
+    pagination: 'boolean',
+    mousewheel: 'boolean',  
+    centeredSlides: 'boolean',
+    autoplay: 'boolean',
+    mobileSlides: 'number',
+    desktopSlides: 'number',
   },
-});
+}); 

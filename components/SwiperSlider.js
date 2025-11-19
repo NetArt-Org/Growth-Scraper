@@ -1,31 +1,34 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import "swiper/css/pagination";
+import { Autoplay, Pagination, Mousewheel } from "swiper/modules";
 
-function SwiperSlider({ children }) {
+function SwiperSlider({ children, pagination, mousewheel, centeredSlides,autoplay,mobileSlides,desktopSlides }) {
     const [isEnd, setIsEnd] = useState(false);
 
     return (
         <div style={{ width: "100%" }}>
             <Swiper
-                navigation={true}
-                modules={[Navigation]}
-                onSlideChange={(swiper) => setIsEnd(swiper.isEnd)} // Track last slide
-                onReachEnd={() => setIsEnd(true)} 
-                onFromEdge={() => setIsEnd(false)} // Reset when not at end
+                centeredSlides={centeredSlides}
+                modules={[Autoplay, Pagination, Mousewheel]}
+                autoplay={ autoplay ? {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                } : false}
+                pagination={pagination ? {clickable:true} : false}
+                mousewheel={mousewheel}
                 grabCursor={true}
-                breakpoints={{
-                    0: { slidesPerView: "auto" },
-                    600: { slidesPerView: "auto" },
-                }}
+                loop={true}
                 slidesPerView={"auto"}
+                breakpoints={{
+                    0: { slidesPerView: mobileSlides ? mobileSlides : "auto"},
+                    1204: { slidesPerView: desktopSlides ? desktopSlides : "auto"},
+                }}
                 spaceBetween={30}
-                className={`mySwiper ${isEnd ? "hide-next" : ""}`} // Add class when at last slide
             >
                 {React.Children.map(children, (child, index) => (
-                    <SwiperSlide key={index} style={{ display: "flex", justifyContent: "center", }}>
+                    <SwiperSlide key={index} >
                         {child}
                     </SwiperSlide>
                 ))}
