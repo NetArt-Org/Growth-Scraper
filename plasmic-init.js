@@ -52,5 +52,6 @@ PLASMIC.registerComponent(SwiperSlider, {
     autoplay: 'boolean',
     mobileSlides: 'number',
     desktopSlides: 'number',
+    vertical:'boolean',
   },
 }); 
