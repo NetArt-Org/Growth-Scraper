@@ -15,21 +15,23 @@ const VerticalAccordion = ({ accordionData }) => {
           <div
             key={key}
             className={`${styles.column} ${expandedIndex === index ? styles.expanded : ""}`}
-            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+            onClick={() => {
+              if (expandedIndex !== index) {
+                setExpandedIndex(index); // Only change when clicking a different item
+              }
+            }}
           >
             <div className={styles.innerElement + (expandedIndex === index ? ` ${styles.active}` : "")}>
-              <div className={styles.ParentFlex}>
                 <div className={styles.flexContainer}>
-                  <div className="flexDiv">
-                    <h3 className="title">{item.title}</h3>
-                    <p className="content">{item.content}</p>
+                  <div className={styles.flexDiv}>
+                    <h3 className={styles.title}>{item.title}</h3>
+                    <p className={styles.content}>{item.content}</p>
                   </div>
-                  <div>
-                    <img className="mainImg" src={item.img} alt={item.title} />
+                  <div className={styles.imgDiv}>
+                    <img className={styles.mainImg} src={item.img} alt={item.title} />
                     {/* <Image width={200} height={200} className={styles.mainImg} src={item.img} /> */}
                   </div>
                 </div>
-              </div>
             </div>
             <div className={styles.collapsedTitle}>{item.title}</div>
           </div>

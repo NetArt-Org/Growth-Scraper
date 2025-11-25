@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 380px;
+  height: 320px;
   gap: 30px;
-  font-family: Poppins !important;
+  font-family: Urbanist !important;
   justify-content: space-around;
 }
 
 
 .column {
-  width: 25%;
+  width: 20%;
   transition: width 0.45s ease;
   overflow: hidden;
   position: relative;
@@ -18,8 +18,8 @@
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
-  border-radius: 12px;
-  background: #fafafa;
+  border-radius: 28px;
+  background: #F8F8F8;
 
 }
 
@@ -33,9 +33,9 @@
   margin: 0
 }
 
-.innerElement .flexDiv {
+.flexDiv {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -53,19 +53,26 @@
   .expanded {
     width: 150% !important;
   }
+  .collapsedTitle {
+    bottom: 30%;
+    left: 50%;
+  }
+  .expanded .flexContainer div {
+    width: 49%;
+  }
 }
 
 /* Styling for rotated text in collapsed tabs */
 .collapsedTitle {
   position: absolute;
-  left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
   white-space: nowrap;
-  color: #6f6f6fe0;
+  color: #595959;
   font-size: 28px;
-  text-align: center;
+  text-align: left;
   z-index: 0;
+  line-height: 100%;
+  font-family: Urbanist;
 }
 
 /* Hide rotated title when expanded */
@@ -76,16 +83,8 @@
 .expanded .flexContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
-  position: relative;
-  border-radius: 32px;
-  padding: 8px 25px;
 }
 
-.expanded .ParentFlex {
-  display: flex;
-  justify-content: space-between;
-}
 
 .innerElement {
   opacity: 0;
@@ -93,7 +92,7 @@
   max-height: 0;
   overflow: hidden;
   transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out, visibility 0s linear 0.4s;
-  padding: 20px;
+  padding: 40px 80px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -101,6 +100,7 @@
 
 .expanded {
   background: #F4F5F0;
+  border-radius: 56px;
   background-size: cover;
   background-position: center;
 }
@@ -133,14 +133,38 @@
   display: flex;
 }
 
-.expanded .flexContainer div {
-  width: 49%;
+.expanded .innerElement .flexContainer .mainImg {
+  display: block;
+  margin-left: auto;
 }
-
 
 @media (max-width: 1024px) {
   .expanded {
-    min-height: 400px !important;
+    min-height: 208px !important;
+    height: max-content !important;
+  }
+
+  .content,
+.innerElement p {
+  font-size: 14px;
+}
+.title,
+.innerElement h3{
+  font-size: 24px;
+}
+  .expanded .innerElement{
+    height: 100%;
+    max-height: 100%;
+  }
+  .collapsedTitle {
+    left: 14%;
+    top: 50%;
+  }
+  .innerElement {
+    padding: 32px;
+  }
+  .expanded .innerElement .flexContainer .mainImg {
+    width: 100%;
   }
 
   .main {
@@ -152,22 +176,31 @@
 
   .collapsedTitle {
     transform: translate(-50%, -50%) rotate(0deg);
-    font-size: 18px;
+    font-size: 24px;
+    font-family: Urbanist;
   }
 
   .column {
     width: 100%;
     transition: height 0.55s ease;
-    height: 60px;
+    height: 93px;
+    border-radius: 16px;
+  }
+  .expanded .column{
+    height: max-content !important;
+  }
+  .expanded .imgDiv{
+    width:208px;
   }
 
-  .expanded .flexContainer {
-    gap: 6px;
-    padding: 8px 10px;
-  }
-
-  .expanded .flexContainer div {
+  .expanded .flexContainer .flexDiv {
     width: 100%;
+  }
+  .expanded .flexContainer{
+    gap: 10px;
+  }
+  .expanded {
+    border-radius: 32px;
   }
 }
 @media(max-width:765px){
@@ -175,11 +208,29 @@
     flex-direction: column-reverse;
     width: 100%;
   }
+  
+  .expanded .imgDiv{
+    width:104px !important;
+    margin: auto !important;
+  }
+  .collapsedTitle {
+    left: 50%;
+    top: 50%;
+  }
+  .expanded .imgDiv .mainImg{
+    margin: auto !important;
+  }
   .expanded .flexContainer .mainImg {
     width: 100px;
   }
   .expanded .flexContainer div {
     width: 100%;
     text-align: center;
+  }
+  .innerElement {
+    padding: 24px;
+  }
+  .column {
+    height: 77px;
   }
 }

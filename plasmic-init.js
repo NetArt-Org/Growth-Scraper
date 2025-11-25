@@ -1,6 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import VerticalAccordion from "./components/VerticalAccordion";
-import Navigation from "./components/Navigation";
 import SwiperSlider from "./components/SwiperSlider";
 
 
@@ -32,14 +31,6 @@ PLASMIC.registerComponent(VerticalAccordion, {
   name: 'VerticalAccordion',
   props: {
     accordionData:'object'
-  },
-});
-PLASMIC.registerComponent(Navigation, {
-  name: 'Navigation',
-  props: {
-    activeMenu:'string',
-    headerConfig:'object',
-    menuData:'object'
   },
 });
 PLASMIC.registerComponent(SwiperSlider, {
