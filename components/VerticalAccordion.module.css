@@ -1,3 +1,5 @@
+
+
 .main {
   display: flex;
   flex-direction: row;
@@ -11,7 +13,6 @@
 
 .column {
   width: 20%;
-  transition: width 0.45s ease;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -20,13 +21,20 @@
   cursor: pointer;
   border-radius: 28px;
   background: #F8F8F8;
-
+/* 🚀 Smart Animate */
+transition:
+width var(--smart-duration) var(--gentle-ease),
+background var(--smart-duration) var(--gentle-ease),
+border-radius var(--smart-duration) var(--gentle-ease),
+flex-grow var(--smart-duration) var(--gentle-ease),
+transform var(--smart-duration) var(--gentle-ease);
 }
 
 .title,
 .innerElement h3 {
   font-family: Urbanist;
-  font-weight: 400;
+  font-weight: 400 !important;
+  color: #084734;
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -68,6 +76,7 @@
   transform: translate(-50%, -50%) rotate(-90deg);
   white-space: nowrap;
   color: #595959;
+  font-weight: 400;
   font-size: 28px;
   text-align: left;
   z-index: 0;
@@ -85,34 +94,33 @@
   align-items: center;
 }
 
-
-.innerElement {
-  opacity: 0;
-  transition: opacity 0s;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out, visibility 0s linear 0.4s;
-  padding: 40px 80px;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .expanded {
   background: #F4F5F0;
   border-radius: 56px;
   background-size: cover;
   background-position: center;
+  /* subtle scale like Figma Smart Animate */
+  transform: scale(1.02);
 }
-
+ .innerElement {
+  display: flex;               /* moved here */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity var(--smart-duration) var(--gentle-ease);
+  padding: 40px 80px;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden; 
+}
 .expanded .innerElement {
-  opacity: 1;
   visibility: visible;
   max-height: 500px;
-  /* Adjust based on your content */
-  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out;
 }
-
+.innerElement.active {
+  opacity: 1;
+  transition-delay: 0.4s;
+} 
 
 .innerElement .arrowImg {
   object-fit: cover;
@@ -126,13 +134,6 @@
   flex-shrink: 0;
   margin: 0px;
 }
-
-.innerElement.active {
-  opacity: 1;
-  transition: opacity 0.5s 0.4s;
-  display: flex;
-}
-
 .expanded .innerElement .flexContainer .mainImg {
   display: block;
   margin-left: auto;
@@ -182,7 +183,8 @@
 
   .column {
     width: 100%;
-    transition: height 0.55s ease;
+    transition:
+      height var(--smart-duration) var(--gentle-ease);
     height: 93px;
     border-radius: 16px;
   }
