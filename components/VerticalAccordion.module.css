@@ -140,11 +140,6 @@ transform var(--smart-duration) var(--gentle-ease);
 }
 
 @media (max-width: 1024px) {
-  .expanded {
-    min-height: 208px !important;
-    height: max-content !important;
-  }
-
   .content,
 .innerElement p {
   font-size: 14px;
@@ -153,10 +148,6 @@ transform var(--smart-duration) var(--gentle-ease);
 .innerElement h3{
   font-size: 24px;
 }
-  .expanded .innerElement{
-    height: 100%;
-    max-height: 100%;
-  }
   .collapsedTitle {
     left: 14%;
     top: 50%;
@@ -180,7 +171,11 @@ transform var(--smart-duration) var(--gentle-ease);
     font-size: 24px;
     font-family: Urbanist;
   }
-
+  
+  .expanded {
+    min-height: 208px !important;
+    height: max-content !important;
+  }
   .column {
     width: 100%;
     transition:
@@ -188,13 +183,9 @@ transform var(--smart-duration) var(--gentle-ease);
     height: 93px;
     border-radius: 16px;
   }
-  .expanded .column{
-    height: max-content !important;
-  }
   .expanded .imgDiv{
     width:208px;
   }
-
   .expanded .flexContainer .flexDiv {
     width: 100%;
   }
