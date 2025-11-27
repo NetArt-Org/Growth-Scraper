@@ -32,6 +32,14 @@ function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autopl
                     1204: { slidesPerView: desktopSlides ? desktopSlides : "auto" },
                 }}
                 spaceBetween={30}
+                on={{
+                    init() {
+                      setTimeout(() => {
+                        window.dispatchEvent(new Event("resize"));
+                      }, 100); // Safari fix
+                    },
+                  }}
+                  
             >
                 {React.Children.map(children, (child, index) => (
                     <SwiperSlide key={index} >
