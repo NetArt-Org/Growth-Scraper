@@ -2,15 +2,15 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay, Pagination, Mousewheel, Parallax } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
-function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autoplay, mobileSlides, desktopSlides, vertical }) {
+function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autoplay, mobileSlides, desktopSlides }) {
 
     return (
         <div style={{ width: "100%" }}>
             <Swiper
                 centeredSlides={centeredSlides}
-                modules={[Autoplay, Pagination, Mousewheel, Parallax]}
+                modules={[Autoplay, Pagination,]}
                 autoplay={autoplay ? {
                     delay: 2500,
                     disableOnInteraction: false,
@@ -24,17 +24,14 @@ function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autopl
                     thresholdDelta: 50,
                     forceToAxis: true,
                 } : false}
-                grabCursor={vertical?false:true}
                 speed={700}
-                loop={vertical ? false : true}
-                direction={vertical ? "vertical" : "horizontal"}
-                parallax={true}
+                loop={true}
+                lazy={true}
                 breakpoints={{
                     0: { slidesPerView: mobileSlides ? mobileSlides : "auto" },
                     1204: { slidesPerView: desktopSlides ? desktopSlides : "auto" },
                 }}
                 spaceBetween={30}
-                style={vertical ? { height: "100vh" } : {}}
             >
                 {React.Children.map(children, (child, index) => (
                     <SwiperSlide key={index} >
