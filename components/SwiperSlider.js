@@ -4,27 +4,20 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 
-function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autoplay, mobileSlides, desktopSlides }) {
+function SwiperSlider({ children, pagination, centeredSlides, autoplay, mobileSlides, desktopSlides, marquee }) {
 
     return (
         <div style={{ width: "100%" }}>
-            <Swiper
+            <Swiper 
+                className={marquee ? "marquee-swiper" : ""}
                 centeredSlides={centeredSlides}
                 modules={[Autoplay, Pagination,]}
                 autoplay={autoplay ? {
-                    delay: 2500,
+                    delay: marquee ? 0 : 2500,
                     disableOnInteraction: false,
                 } : false}
                 pagination={pagination ? { clickable: true } : false}
-                mousewheel={mousewheel ? {
-                    releaseOnEdges: true,
-                    sensitivity: 1,
-                    thresholdTime: 700,
-                    virtual: true,
-                    thresholdDelta: 50,
-                    forceToAxis: true,
-                } : false}
-                speed={700}
+                speed={marquee ? 3000 : 700}
                 loop={true}
                 lazy={true}
                 breakpoints={{
@@ -42,7 +35,7 @@ function SwiperSlider({ children, pagination, mousewheel, centeredSlides, autopl
                   
             >
                 {React.Children.map(children, (child, index) => (
-                    <SwiperSlide key={index} >
+                    <SwiperSlide key={index} className={marquee ? "marquee-swiper" : ""}>
                         {child}
                     </SwiperSlide>
                 ))}

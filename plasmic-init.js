@@ -1,6 +1,7 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import VerticalAccordion from "./components/VerticalAccordion";
 import SwiperSlider from "./components/SwiperSlider";
+import ScrollerComp from "./components/ScrollerComp";
 
 
 export const PLASMIC = initPlasmicLoader({
@@ -15,7 +16,7 @@ export const PLASMIC = initPlasmicLoader({
   // For development, you can set preview to true, which will use the unpublished
   // project, allowing you to see your designs without publishing.  Please
   // only use this for development, as this is significantly slower.
-  preview: false,
+  preview: true,
 });
 
 // You can register any code components that you want to use here; see
@@ -38,10 +39,18 @@ PLASMIC.registerComponent(SwiperSlider, {
   props: {
     children: 'slot',
     pagination: 'boolean',
-    mousewheel: 'boolean',  
     centeredSlides: 'boolean',
     autoplay: 'boolean',
     mobileSlides: 'number',
     desktopSlides: 'number',
+    marquee: 'boolean',
   },
 }); 
+PLASMIC.registerComponent(ScrollerComp, {
+  name: 'ScrollerComp',
+  props: {
+    children: 'slot',
+    speed: 'number',
+    style: 'object',
+  },
+});
