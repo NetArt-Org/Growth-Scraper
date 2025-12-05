@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./VerticalAccordion.module.css";
-import Image from 'next/image';
-import Link from "next/link";
 
 const VerticalAccordion = ({ accordionData }) => {
   const [expandedIndex, setExpandedIndex] = useState(0);
@@ -59,7 +57,7 @@ const VerticalAccordion = ({ accordionData }) => {
                   <img
                     className={styles.mainImg}
                     src={item.img}
-                    alt={item.title}
+                    alt={item.alt}
                   />
                 </div>
               </div>
