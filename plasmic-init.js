@@ -2,6 +2,7 @@ import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import VerticalAccordion from "./components/VerticalAccordion";
 import SwiperSlider from "./components/SwiperSlider";
 import ScrollerComp from "./components/ScrollerComp";
+import SeoHead from "./components/SeoHead";
 
 
 export const PLASMIC = initPlasmicLoader({
@@ -45,7 +46,14 @@ PLASMIC.registerComponent(SwiperSlider, {
     desktopSlides: 'number',
     marquee: 'boolean',
   },
-}); 
+});
+
+PLASMIC.registerComponent(SeoHead, {
+  name: 'SeoHead',
+  props: {
+  },
+});
+
 PLASMIC.registerComponent(ScrollerComp, {
   name: 'ScrollerComp',
   props: {
