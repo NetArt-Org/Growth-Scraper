@@ -62,7 +62,7 @@ transform var(--smart-duration) var(--gentle-ease);
     width: 150% !important;
   }
   .collapsedTitle {
-    bottom: 30%;
+    top: 50%;
     left: 50%;
   }
   .expanded .flexContainer div {
