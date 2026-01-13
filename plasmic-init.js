@@ -50,8 +50,9 @@ PLASMIC.registerComponent(SwiperSlider, {
 
 PLASMIC.registerComponent(SeoHead, {
   name: 'SeoHead',
-  props: {
-  },
+  props:{
+    
+  }
 });
 
 PLASMIC.registerComponent(ScrollerComp, {
