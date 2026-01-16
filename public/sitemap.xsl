@@ -8,7 +8,10 @@
   <xsl:template match="/">
     <html>
       <head>
-        <title>XML Sitemap</title>
+      <meta name="robots" content="noindex,follow"/>
+
+        <title>XML Sitemap - Growth Scraper</title>
+
         <style>
           body {
             margin: 0;
